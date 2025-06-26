@@ -39,6 +39,7 @@
         let appInstalled = false;
     
         const relatedApps = await navigator.getInstalledRelatedApps();
+        console.log('relatedApps', relatedApps)
         relatedApps.forEach((app) => {
           appInstalled = true
           console.log(app.id, app.platform, app.url);

@@ -1,6 +1,6 @@
 {
     "related_applications": [{
       "platform": "webapp",
-      "url": "https://iliagubkin.github.io/gigaApp2/manifest.json"
+      "url": "https://iliagubkin.github.io/gigaApp2/public/manifest.json"
     }]
   }
