@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.style.css">
+  <title>TestPWARedirect</title>
+</head>
+
+<body>
+
+  <header class="header section_indent_m">
+    <div class="container flex header__container">
+      <a class="header__logo" href="#">
+        <img src="./img/logo.svg" alt="Логотип сайта">
+      </a>
+      <div class="header__nav-wrapper flex">
+        <p>Выберите ваше приложение</p>
+        <nav class="header__nav">
+          <ul class="header__list flex">
+            <li class="header__item" id="app-button" style="display: none;">
+              <button onclick="openApp('tg://resolve', 'https://telegram.org/')">PWA Evklid</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <script>
+    function openApp(scheme, fallbackUrl) {
+        window.location = scheme;
+    }
+    
+    async function checkApps() {
+        // Проверка Telegram
+        let appInstalled = false;
+    
+        const relatedApps = await navigator.getInstalledRelatedApps();
+        relatedApps.forEach((app) => {
+          appInstalled = true
+          console.log(app.id, app.platform, app.url);
+        });
+
+        if (appInstalled) {
+            document.getElementById('app-button').style.display = 'block';
+        } else {
+            document.getElementById('app-button').style.display = 'none';
+        }
+    }
+    
+    window.onload = checkApps;
+    </script>
+</body>
+
+</html>
